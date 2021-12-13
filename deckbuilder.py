@@ -1,4 +1,3 @@
-import card
 import random
 
 
@@ -14,8 +13,17 @@ class Deck:
     def __init__(self, deckname, cardlist):
         self.deckname = deckname
         self.cardlist = cardlist
-        self.totalcards = len(cardlist)
-        self.cardsremain = len(cardlist)
+        self.totalcards = len(self.cardlist)
+        self.cardsremain = len(self.cardlist)
+
+    def __repr__(self):
+        return str(self)
+
+    def __str__(self):
+        return "Deck: {}\ntotal cards: {}\ncards remain: {}".format(self.deckname, self.totalcards, self.cardsremain)
+    
+    def __iter__(self):
+        return iter(self.cardlist)
 
     def shuffle(self):
         """Shuffles the cards in the deck"""
@@ -23,4 +31,6 @@ class Deck:
 
     def draw(self, x):
         """Removes the first x elements of the deck and returns them in a list"""
-        return [card for i in range (x)]
+        temphand = [self.cardlist.pop(0) for i in range (x)]
+        self.cardsremain = len(self.cardlist)
+        return temphand

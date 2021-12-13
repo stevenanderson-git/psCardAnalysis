@@ -1,0 +1,12 @@
+13,island,land,ms
+13,swamp,land,ms
+4,counterspell,instant,rm
+1,Jace,planeswalker,ca,thr
+4,negate,instant,rm
+4,sign in blood,sorcery,ca
+4,damnation,sorcery,rm
+4,brainstorm,instant,ca
+4,wurmcoil engine,artifact creature, thr
+4,snapcaster mage,creature,thr,ca
+4,serum visions,sorcery,ca
+2,creeping tar pit,land creature,ms,thr
