@@ -1,82 +1,82 @@
-1,prosper tome-bound,creature,thr,ca
-1,birgi,creature,thr,ca
-1,bonecrusher giant,creature,thr,rm
-1,dauthi voidwalker,creature,thr,ca
-1,dualcaster mage,creature,thr
-1,etali primal storm,creature,thr,ca
-1,ghitu crhonicler,creature,ca
-1,gonti lord of luxuri,creature,ca
-1,grinning ignus,creature,thr
-1,izzet chemister,creature,ca
-1,laelia the blade,creature,thr,ca
-1,mindleecher,creature,thr
-1,murderous rider,creature,thr,rm
-1,revolutionist,creature,ca
-1,sedgemoor witch,creature,thr,ca
-1,storm-kiln artist,creature,thr,ca
-1,valki god of lies,creature planeswalker,thr,ca
-1,varragoth,creature,thr
-1,wild-magic sorcer,creature,ca
-1,xorn,creature,ca
-1,arcane signet,artifact,ms
-1,chromatic lantern,artifact,ms
-1,fellwar stone,artifact,ms
-1,lighting greaves,artifact,thr
-1,mind stone,artifact,ms
-1,rakdos signet,artifact,ms
-1,sol ring,artifact,ms
-1,swifty boots,artifact,thr
-1,talisman of indulgence,artifact,ms
-1,thought vessel,artifact,ms
-1,veinfire borderpost,artifact,ms,ca
-1,viridian longbow,artifact,thr
-1,blasphemous act,sorcery,rm
-1,change of fortune,sorcery,ca
-1,command the dreadhorde,sorcery,ca
-1,vevered suspician,sorcery,ca
-1,galvanic relay,sorcery,ca
-1,grapeshot,sorcery,thr
-1,ignite the future,sorcery,ca
-1,jeska's will,sorcery,ca,ms
-1,light up the stage,sorcery,ca
-1,mizzikx's mastery,sorcery,ca,thr
-1,reckless impulse,sorcery,ca
-1,rousing refrain,sorcery,ms
-1,soulfire eruption,sorcery,thr
-1,tendrils of agony,sorcery,thr
-1,throes of chaos,sorcery,ca
-1,vandalblast,sorcery,rm
-1,volcanic torrent,sorcery,rm
-1,chandra fire artisan,planeswalker,ca,thr
-1,chandra torch of defiance,planeswalker,ca,thr
-1,curse of hospitality,enchantment,ca
-1,outpost seige,enchantment,ca
-1,theater of horros,enchantment,ca
-1,underworld breach,enchantment,ca
-1,abrade,instant,rm
-1,bitumous blast,instant,rm
-1,chaos warp,instant,rm
-1,commune with lava,instant,ca
-1,dark ritual,instant,ms
-1,hurl thorugh hell,instant,rm
-1,professor's warning,instant,ca
-1,rakdos charm,instant,rm
-1,seething song,instant,ms
-1,terminate,instant,rm
-1,you find some prisoners,instant,ca
-1,blightstep pathway,land,ms
-1,bojuka bog,land,ms
-1,command beacon,land,ms
-1,command tower,land,ms
-1,exotic orchard,land,ms
-1,fabled passage,land,ms,ca
-1,field of ruin,land,ms
-1,foreboding ruins,land,ms
-9,mountain,land,ms
-1,shadowblood ridge,land,ms
-1,smoldering marsh,land,ms
-1,spinerock knoll,land,ms
-11,swamp,land,ms
-1,tainted peak,land,ms
-1,temple of malice,land,ms
-1,urborg tomb of yawgmoth,land,ms
+1,prosper tome-bound,creature,threat
+1,birgi,creature,threat
+1,bonecrusher giant,creature,threat
+1,dauthi voidwalker,creature,threat
+1,dualcaster mage,creature,threat
+1,etali primal storm,creature,threat
+1,ghitu crhonicler,creature,cardadvantage
+1,gonti lord of luxuri,creature,cardadvantage
+1,grinning ignus,creature,threat
+1,izzet chemister,creature,cardadvantage
+1,laelia the blade,creature,threat
+1,mindleecher,creature,threat
+1,murderous rider,creature,threat
+1,revolutionist,creature,cardadvantage
+1,sedgemoor witch,creature,threat
+1,storm-kiln artist,creature,threat
+1,valki god of lies,creature planeswalker,threat
+1,varragoth,creature,threat
+1,wild-magic sorcer,creature,cardadvantage
+1,xorn,creature,cardadvantage
+1,arcane signet,artifact,resource
+1,chromatic lantern,artifact,resource
+1,fellwar stone,artifact,resource
+1,lighting greaves,artifact,threat
+1,mind stone,artifact,resource
+1,rakdos signet,artifact,resource
+1,sol ring,artifact,resource
+1,swifty boots,artifact,threat
+1,talisman of indulgence,artifact,resource
+1,thought vessel,artifact,resource
+1,veinfire borderpost,artifact,resource
+1,viridian longbow,artifact,threat
+1,blasphemous act,sorcery,removal
+1,change of fortune,sorcery,cardadvantage
+1,command the dreadhorde,sorcery,cardadvantage
+1,vevered suspician,sorcery,cardadvantage
+1,galvanic relay,sorcery,cardadvantage
+1,grapeshot,sorcery,threat
+1,ignite the future,sorcery,cardadvantage
+1,jeska's will,sorcery,cardadvantage
+1,light up the stage,sorcery,cardadvantage
+1,mizzikx's mastery,sorcery,cardadvantage
+1,reckless impulse,sorcery,cardadvantage
+1,rousing refrain,sorcery,resource
+1,soulfire eruption,sorcery,threat
+1,tendrils of agony,sorcery,threat
+1,throes of chaos,sorcery,cardadvantage
+1,vandalblast,sorcery,removal
+1,volcanic torrent,sorcery,removal
+1,chandra fire artisan,planeswalker,cardadvantage
+1,chandra torch of defiance,planeswalker,cardadvantage
+1,curse of hospitality,enchantment,cardadvantage
+1,outpost seige,enchantment,cardadvantage
+1,theater of horros,enchantment,cardadvantage
+1,underworld breach,enchantment,cardadvantage
+1,abrade,instant,removal
+1,bitumous blast,instant,removal
+1,chaos warp,instant,removal
+1,commune with lava,instant,cardadvantage
+1,dark ritual,instant,resource
+1,hurl thorugh hell,instant,removal
+1,professor's warning,instant,cardadvantage
+1,rakdos charm,instant,removal
+1,seething song,instant,resource
+1,terminate,instant,removal
+1,you find some prisoners,instant,cardadvantage
+1,blightstep pathway,land,resource
+1,bojuka bog,land,resource
+1,command beacon,land,resource
+1,command tower,land,resource
+1,exotic orchard,land,resource
+1,fabled passage,land,resource
+1,field of ruin,land,resource
+1,foreboding ruins,land,resource
+9,mountain,land,resource
+1,shadowblood ridge,land,resource
+1,smoldering marsh,land,resource
+1,spinerock knoll,land,resource
+11,swamp,land,resource
+1,tainted peak,land,resource
+1,temple of malice,land,resource
+1,urborg tomb of yawgmoth,land,resource

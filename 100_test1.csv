@@ -1,90 +1,90 @@
-1,teysa,creature,thr
-1,balan wandering knight,creature,thr
-1,taj-nar swordsmith,creature,thr
-1,sram senior edificer,creature,thr,ca
-1,relic seeker,creature,thr
-1,stonehewer giant,creature,thr,ca
-1,puresteel paladin,creature,thr,ca
-1,stoneforge mystic,creature,thr,ca
-1,danitha capashen,creature,thr
-1,heavenly blademaster,creature,thr
-1,revel in riches,enchantment,thr
-1,sigarda's aid,enchantment,thr
-1,wound reflection,enchantment,thr
-1,phyrexian arena,enchantment,ca
-1,duelist's heritage,enchantment,thr
-1,smothering tithe,enchantment,ca
-1,ethereal absolution,enchantment,rm
-1,ancient craving,sorcery,ca
-1,ambition's cost,sorcery,ca
-1,austere command,sorcery,rm
-1,read the bones,sorcery,ca
-1,council's judgement,sorcery,rm
-1,night's whisper,sorcery,ca
-1,toxic deluge,sorcery,rm
-1,sign in blood,sorcery,ca
-1,open the vaults,sorcery,ca
-1,merciless eviction,sorcery,rm
-1,demonic tutor,sorcery,ca
-1,hammer of nazahn,artifact,thr
-1,sword of the anime,artifact,thr,ca
-1,inspiring statuary,artifact,ca
-1,conqueror's flail,artifact,thr
-1,cranial plating,artifact,thr
-1,fellwar stone,artifact,ms
-1,champion's helm,artifact,thr
-1,mana crypt,artifact,ms
-1,sword of l&s,artifact,thr
-1,sword of b&m,artifact,thr
-1,umezawa's jitte,artifact,thr
-1,throught vessel,artifact,ms
-1,expedition map,artifact,ms,ca
-1,thran dynamo,artifact,ms
-1,inquisitor's flail,artifact,thr
-1,mask of avacyn,artifact,thr
-1,sol ring,artifact,ms
-1,sword of w&p,artifact,thr
-1,sword of f&f,artifact,thr
-1,sword of f&i,artifact,thr
-1,grafted exoskeleton,artifact,thr
-1,fireshrieker,artifact,thr
-1,mindstone,artifact,ms,ca
-1,mana valut,artifact,ms
-1,orzhov signet,artifact,ms
-1,everflowing chalice,artifact,ms
-1,blackblade reforged,artifact,thr
-1,swiftfoot boots,artifact,ca
-6,swamp,land,ms
-6,plains,land,ms
-1,isolated chapel,land,ms
-1,commandtower,land,ms
-1,scavenger grounds,land,ms
-1,bojuka bog,land,ms
-1,marsh flats,land,ms,ca
-1,caves of koilos,land,ms
-1,reliquary tower,land,ms
-1,homeword path,land,ms
-1,temple of silence,land,ms
-1,tainted field,land,ms
-1,tectonicedge,land,ms
-1,buried ruin,land,ms
-1,strip mine,land,ms
-1,fetid heath,land,ms
-1,cabal coffers,land,ms
-1,hal ofthe bandit lord,land,ms
-1,kor haven,land,ms
-1,ancient tomb,land,ms
-1,scrubland,land,ms
-1,urborg tomb of yawgmoth,land,ms
-1,godless shrine,land,ms
-1,ancient den,land,ms
-1,vault of whispers,land,ms
-1,darksteel citadel,land,ms
-1,teferi's protection,instant,ca
-1,anguished unmaking,instant,rm
-1,path to exile,instant,rm
-1,tainted strike,instant,thr
-1,swords to plowshares,instant,rm
-1,hatred,instant,thr
-1,utter end,instant,rm
-1,return to dust,instant,rm
+1,teysa,creature,threat
+1,balan wandering knight,creature,threat
+1,taj-nar swordsmith,creature,threat
+1,sram senior edificer,creature,threat
+1,relic seeker,creature,threat
+1,stonehewer giant,creature,threat
+1,puresteel paladin,creature,threat
+1,stoneforge mystic,creature,threat
+1,danitha capashen,creature,threat
+1,heavenly blademaster,creature,threat
+1,revel in riches,enchantment,threat
+1,sigarda's aid,enchantment,threat
+1,wound reflection,enchantment,threat
+1,phyrexian arena,enchantment,cardadvantage
+1,duelist's heritage,enchantment,threat
+1,smothering tithe,enchantment,cardadvantage
+1,ethereal absolution,enchantment,removal
+1,ancient craving,sorcery,cardadvantage
+1,ambition's cost,sorcery,cardadvantage
+1,austere command,sorcery,removal
+1,read the bones,sorcery,cardadvantage
+1,council's judgement,sorcery,removal
+1,night's whisper,sorcery,cardadvantage
+1,toxic deluge,sorcery,removal
+1,sign in blood,sorcery,cardadvantage
+1,open the vaults,sorcery,cardadvantage
+1,merciless eviction,sorcery,removal
+1,demonic tutor,sorcery,cardadvantage
+1,hammer of nazahn,artifact,threat
+1,sword of the anime,artifact,threat
+1,inspiring statuary,artifact,cardadvantage
+1,conqueror's flail,artifact,threat
+1,cranial plating,artifact,threat
+1,fellwar stone,artifact,resource
+1,champion's helm,artifact,threat
+1,mana crypt,artifact,resource
+1,sword of l&s,artifact,threat
+1,sword of b&m,artifact,threat
+1,umezawa's jitte,artifact,threat
+1,throught vessel,artifact,resource
+1,expedition map,artifact,resource
+1,thran dynamo,artifact,resource
+1,inquisitor's flail,artifact,threat
+1,mask of avacyn,artifact,threat
+1,sol ring,artifact,resource
+1,sword of w&p,artifact,threat
+1,sword of f&f,artifact,threat
+1,sword of f&i,artifact,threat
+1,grafted exoskeleton,artifact,threat
+1,fireshrieker,artifact,threat
+1,mindstone,artifact,resource
+1,mana valut,artifact,resource
+1,orzhov signet,artifact,resource
+1,everflowing chalice,artifact,resource
+1,blackblade reforged,artifact,threat
+1,swiftfoot boots,artifact,cardadvantage
+6,swamp,land,resource
+6,plains,land,resource
+1,isolated chapel,land,resource
+1,commandtower,land,resource
+1,scavenger grounds,land,resource
+1,bojuka bog,land,resource
+1,marsh flats,land,resource
+1,caves of koilos,land,resource
+1,reliquary tower,land,resource
+1,homeword path,land,resource
+1,temple of silence,land,resource
+1,tainted field,land,resource
+1,tectonicedge,land,resource
+1,buried ruin,land,resource
+1,strip mine,land,resource
+1,fetid heath,land,resource
+1,cabal coffers,land,resource
+1,hal ofthe bandit lord,land,resource
+1,kor haven,land,resource
+1,ancient tomb,land,resource
+1,scrubland,land,resource
+1,urborg tomb of yawgmoth,land,resource
+1,godless shrine,land,resource
+1,ancient den,land,resource
+1,vault of whispers,land,resource
+1,darksteel citadel,land,resource
+1,teferi's protection,instant,cardadvantage
+1,anguished unmaking,instant,removal
+1,path to exile,instant,removal
+1,tainted strike,instant,threat
+1,swords to plowshares,instant,removal
+1,hatred,instant,threat
+1,utter end,instant,removal
+1,return to dust,instant,removal

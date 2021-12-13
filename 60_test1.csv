@@ -1,11 +1,11 @@
-25,swamp,land,ms
-4,vampire nighthawk,creature,thr
-1,sorin,planeswalker,ca,thr
-4,doom blade,instant,rm
-4,sign in blood,sorcery,ca
-4,vampire hexmage,creature,thr
-4,charcoal diamond,artifact,ms
-4,blade of the bloodchief,artifact
-4,kalitas,creature,thr,ca
-4,sangromancer,creature,thr
-2,night's whisper,instant,ca
+25,swamp,land,resource
+4,vampire nighthawk,creature,threat
+1,sorin,planeswalker,cardadvantage
+4,doom blade,instant,removal
+4,sign in blood,sorcery,cardadvantage
+4,vampire hexmage,creature,threat
+4,charcoal diamond,artifact,resource
+4,blade of the bloodchief,artifact,cardadvantage
+4,kalitas,creature,threat
+4,sangromancer,creature,threat
+2,night's whisper,instant,cardadvantage

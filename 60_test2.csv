@@ -1,12 +1,12 @@
-13,island,land,ms
-13,swamp,land,ms
-4,counterspell,instant,rm
-1,Jace,planeswalker,ca,thr
-4,negate,instant,rm
-4,sign in blood,sorcery,ca
-4,damnation,sorcery,rm
-4,brainstorm,instant,ca
-4,wurmcoil engine,artifact creature, thr
-4,snapcaster mage,creature,thr,ca
-4,serum visions,sorcery,ca
-2,creeping tar pit,land creature,ms,thr
+13,island,land,resource
+13,swamp,land,resource
+4,counterspell,instant,removal
+1,Jace,planeswalker,cardadvantage
+4,negate,instant,removal
+4,sign in blood,sorcery,cardadvantage
+4,damnation,sorcery,removal
+4,brainstorm,instant,cardadvantage
+4,wurmcoil engine,artifact creature,threat
+4,snapcaster mage,creature,threat
+4,serum visions,sorcery,cardadvantage
+2,creeping tar pit,land creature,resource
