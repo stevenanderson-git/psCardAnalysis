@@ -1,3 +1,4 @@
+import random
 from analysis import analyze_multihand
 from card import Card
 from deckbuilder import Deck
@@ -31,12 +32,11 @@ def create_from_csv(filename):
         return Deck(deckname, cardlist)
 
 
-def create_generic_deck(resources, threats, removal, cardadvantage):
+def create_generic_deck(resources, threats, removal, cardadvantage, deckname='Generic Deck'):
     """Creates a generic deck of resources, threats, removal, and cardadvantage
     Cards created have a generic supertype, names are their classification with the count they were created on
     and only taged based on classification.
     """
-    deckname = 'Generic Deck'
     cardlist = []
     for r in range(resources):
         cardlist.append(Card('RESOURCE_' + str(r), 'generic', r, 'resource'))
@@ -47,6 +47,39 @@ def create_generic_deck(resources, threats, removal, cardadvantage):
     for ca in range(cardadvantage):
         cardlist.append(Card('CARDADVANTAGE_'+str(ca),
                         'generic', ca, 'cardadvantage'))
+    return Deck(deckname, cardlist)
+
+
+def generic_40():
+    deckname = 'Generic 40'
+    return create_generic_deck(16, 14, 5, 5, deckname=deckname)
+
+
+def generic_60():
+    deckname = 'Generic 60'
+    return create_generic_deck(24, 20, 7, 9, deckname=deckname)
+
+
+def generic_100():
+    deckname = 'Generic 100'
+    return create_generic_deck(40, 28, 16, 16, deckname=deckname)
+
+
+def random_deck(totalcards):
+    deckname = 'Randomized Deck'
+    cardlist = []
+    for i in range(totalcards):
+        rng = random.randint(1, 4)
+        if rng == 1:
+            cardlist.append(Card('RESOURCE_' + str(i),
+                            'generic', i, 'resource'))
+        if rng == 2:
+            cardlist.append(Card('THREAT_' + str(i), 'generic', i, 'threat'))
+        if rng == 3:
+            cardlist.append(Card('REMOVAL_' + str(i), 'generic', i, 'removal'))
+        if rng == 4:
+            cardlist.append(Card('CARDADVANTAGE_'+str(i),
+                                 'generic', i, 'cardadvantage'))
     return Deck(deckname, cardlist)
 
 
