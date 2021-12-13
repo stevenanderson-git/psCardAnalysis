@@ -1,6 +1,8 @@
+from analysis import analyze_multihand
 from card import Card
 from deckbuilder import Deck
 import csv
+import collections
 
 
 
@@ -15,7 +17,7 @@ def create_from_csv(filename):
             quantity = int(row.pop(0))
             cardname = row.pop(0)
             supertype = row.pop(0)
-            classification = row
+            classification = str(row.pop(0))
             templist = []
             # make card objects for the quantity provided
             for i in range(quantity):
@@ -23,12 +25,21 @@ def create_from_csv(filename):
                     cid = i + 1
                 else:
                     cid = 1
-                templist.append(Card(cardname, supertype, cid, classification=classification))
+                templist.append(Card(cardname, supertype, cid, classification))
             # join the list of new cards with the decklist
             cardlist = cardlist + templist
         # build the deck
         deckname = filename.split('.', 1)[0]
         return Deck(deckname, cardlist)
+
+def analysis_test_100(x):
+    d100 = create_from_csv('100_test2.csv')
+    mh = analyze_multihand(d100, x, 7)
+    counter = collections.Counter()
+    for hand in mh:
+        counter.update(hand)    
+    return dict(counter)
+
 
 def begin_state(filename):
     """

@@ -34,3 +34,18 @@ class Deck:
         temphand = [self.cardlist.pop(0) for i in range (x)]
         self.cardsremain = len(self.cardlist)
         return temphand
+    
+    def reset_deck(self, hand):
+        """Shuffles the hand back into the deck"""
+        self.cardlist = self.cardlist + hand
+        hand.clear()
+        self.shuffle()
+        self.cardsindeck()
+    
+    def cardsindeck(self):
+        self.cardsremain = len(self.cardlist)
+        return self.cardsremain
+
+    def reset_draw7(self, hand):
+        self.reset_deck(hand)
+        return self.draw(7)
