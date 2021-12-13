@@ -30,9 +30,13 @@ def create_from_csv(filename):
         deckname = filename.split('.', 1)[0]
         return Deck(deckname, cardlist)
 
-def test_60_1():
+def begin_state(filename):
+    """
+    Generates a shuffled deck and hand of 7 cards and returns the objects.
+    filename - a string representation of a deck in .csv form
+    """
     print("Building Deck")
-    deck = create_from_csv('60_test1.csv')
+    deck = create_from_csv(filename)
     print("Shuffling")
     deck.shuffle()
     print(deck)
@@ -45,17 +49,15 @@ def test_60_1():
     
     return deck, hand
 
+
+def test_60_1():
+    return begin_state('60_test1.csv')
+
 def test_60_2():
-    print("Building Deck")
-    deck = create_from_csv('60_test2.csv')
-    print("Shuffling")
-    deck.shuffle()
-    print(deck)
-    print("Drawing 7")
-    hand = deck.draw(7)
-    print(deck)
-    print('Cards in hand:')
-    for c in hand:
-        print(c)
-    
-    return deck, hand
+    return begin_state('60_test2.csv')
+
+def test_100_1():
+    return begin_state('100_test1.csv')
+
+def test_100_2():
+    return begin_state('100_test2.csv')
