@@ -1,3 +1,4 @@
+import collections
 import random
 
 
@@ -49,3 +50,10 @@ class Deck:
     def reset_draw7(self, hand):
         self.reset_deck(hand)
         return self.draw(7)
+
+    def total_classifications(self):
+        """Returns a dictionary that represents the total number of cards with each classification"""
+        cdict = {'resource':0,'threat':0,'cardadvantage':0,'removal':0}
+        for c in self.cardlist:
+            cdict[c.classification] +=1
+        return cdict

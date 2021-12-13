@@ -5,8 +5,6 @@ import csv
 import collections
 
 
-
-
 def create_from_csv(filename):
     with open(filename) as csvfile:
         csvreader = csv.reader(csvfile)
@@ -32,22 +30,31 @@ def create_from_csv(filename):
         deckname = filename.split('.', 1)[0]
         return Deck(deckname, cardlist)
 
-def analysis_test_100(x):
-    d100 = create_from_csv('100_test2.csv')
-    mh = analyze_multihand(d100, x, 7)
-    counter = collections.Counter()
-    for hand in mh:
-        counter.update(hand)    
-    return dict(counter)
+
+def create_generic_deck(resources, threats, removal, cardadvantage):
+    """Creates a generic deck of resources, threats, removal, and cardadvantage
+    Cards created have a generic supertype, names are their classification with the count they were created on
+    and only taged based on classification.
+    """
+    deckname = 'Generic Deck'
+    cardlist = []
+    for r in range(resources):
+        cardlist.append(Card('RESOURCE_' + str(r), 'generic', r, 'resource'))
+    for t in range(threats):
+        cardlist.append(Card('THREAT_' + str(t), 'generic', t, 'threat'))
+    for rem in range(removal):
+        cardlist.append(Card('REMOVAL_' + str(rem), 'generic', rem, 'removal'))
+    for ca in range(cardadvantage):
+        cardlist.append(Card('CARDADVANTAGE_'+str(ca),
+                        'generic', ca, 'cardadvantage'))
+    return Deck(deckname, cardlist)
 
 
-def begin_state(filename):
+def begin_state(deck):
     """
     Generates a shuffled deck and hand of 7 cards and returns the objects.
-    filename - a string representation of a deck in .csv form
+    deck - a Deck of MTG cards
     """
-    print("Building Deck")
-    deck = create_from_csv(filename)
     print("Shuffling")
     deck.shuffle()
     print(deck)
@@ -57,18 +64,16 @@ def begin_state(filename):
     print('Cards in hand:')
     for c in hand:
         print(c)
-    
+
     return deck, hand
 
 
-def test_60_1():
-    return begin_state('60_test1.csv')
+# Beginning of analysis tests
 
-def test_60_2():
-    return begin_state('60_test2.csv')
 
-def test_100_1():
-    return begin_state('100_test1.csv')
-
-def test_100_2():
-    return begin_state('100_test2.csv')
+def montehand_test_deck(deck, x):
+    mh = analyze_multihand(deck, x, 7)
+    counter = collections.Counter()
+    for h in mh:
+        counter.update(h)
+    return dict(counter)
