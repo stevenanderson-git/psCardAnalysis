@@ -5,6 +5,9 @@ from deckbuilder import Deck
 import csv
 import collections
 from plotstats import make_scatter
+from stattools import hypergeometric_distribution
+from tabulate import tabulate
+import matplotlib.pyplot as plt
 
 
 def create_from_csv(filename):
@@ -49,21 +52,6 @@ def create_generic_deck(resources, threats, removal, cardadvantage, deckname='Ge
         cardlist.append(Card('CARDADVANTAGE_'+str(ca),
                         'generic', ca, 'cardadvantage'))
     return Deck(deckname, cardlist)
-
-
-def generic_40():
-    deckname = 'Generic 40'
-    return create_generic_deck(16, 14, 5, 5, deckname=deckname)
-
-
-def generic_60():
-    deckname = 'Generic 60'
-    return create_generic_deck(24, 20, 7, 9, deckname=deckname)
-
-
-def generic_100():
-    deckname = 'Generic 100'
-    return create_generic_deck(40, 28, 16, 16, deckname=deckname)
 
 
 def random_deck(totalcards):
@@ -115,25 +103,97 @@ def montehand_test_deck(deck, x, n):
     return dict(counter)
 
 
-def random_deck_datagen():
-    decks_to_create = 100
-    deck_size = 100
-    runs = 100
-    starting_hand = 7
+def random_deck_datagen(decks_to_create=100, deck_size=60, runs=100, starting_hand=7):
     # create a list of decks with a random distribution of deck_size cards
     dataset = [random_deck(deck_size) for i in range(decks_to_create)]
-    results = [(d.type_distribution(), analyze_multihand(d,runs,starting_hand)) for d in dataset]
+    results = [(d.type_distribution(), analyze_multihand(
+        d, runs, starting_hand)) for d in dataset]
     xvals = []
     yvals = []
     for (dist, samp_hand) in results:
         for hand in samp_hand:
             xvals.append(dist['resource'])
             yvals.append(hand['resource'])
-    
-    make_scatter(xvals,yvals,'Deck Resources', 'Opening Hand Resources')
+
+    make_scatter(xvals, yvals, 'Deck Resources', 'Opening Hand Resources')
 
 
+def build_multiresource(decksize, lower, upper):
+    """Build decks of specified size with lower and upper bounds of resource cards.
+
+    decksize - total cards in deck
+    lower - lower bound of resource count
+    upper - upper bound of resource count
+
+    return - list of deck objects
+    """
+    resource_count = [x for x in range(lower, upper)]
+    test_decks = []
+    for rc in resource_count:
+        deckname = 'G-RC-'+str(rc)
+        cardlist = [Card('Resource_'+str(t), 'generic', t, 'resource')
+                    for t in range(rc)]
+        for i in range(decksize - rc):
+            rng = random.randint(1, 3)
+            if rng == 1:
+                cardlist.append(
+                    Card('THREAT_' + str(i), 'generic', i, 'threat'))
+            if rng == 2:
+                cardlist.append(
+                    Card('REMOVAL_' + str(i), 'generic', i, 'removal'))
+            if rng == 3:
+                cardlist.append(Card('CARDADVANTAGE_'+str(i),
+                                     'generic', i, 'cardadvantage'))
+
+        test_decks.append(Deck(deckname, cardlist))
+    return test_decks
 
 
-random_deck_datagen()
+def test_csvdeck(filename, handsize=7, y=4):
+    deck = create_from_csv(filename)
+    type_dist = deck.type_distribution()
+    res = type_dist['resource']
+    thr = type_dist['threat']
+    ca = type_dist['cardadvantage']
+    rm = type_dist['removal']
+    print(deck)
+    print(type_dist)
+
+    hg = hypergeometric_distribution()
+    print(hg.pmf(deck.totalcards, handsize, res, y))
+
+
+# test_csvdeck('100_test1.csv')
+
+def create_starthanddata(handsize=7, qty=3):
+    decks_40 = build_multiresource(40, 13, 21)
+    decks_60 = build_multiresource(60, 18, 27)
+    decks_100 = build_multiresource(100, 29, 46)
+    decks = [decks_40, decks_60, decks_100]
+    headers = ['ResourceCount', '% of having ' + str(qty)]
+    tables = []
+    for deck in decks:
+        table = []
+        for d in deck:
+            row = []
+            totalcards = d.totalcards
+            resourcecount = d.type_distribution()['resource']
+            hd = hypergeometric_distribution()
+            d_hd = hd.pmf(totalcards, handsize, resourcecount, qty)
+
+            # row.append(totalcards)
+            row.append(resourcecount)
+            row.append("{:.3%}".format(d_hd))
+            table.append(row)
+        tables.append(table)
+
+    for t in tables:
+        #print(tabulate(t, headers=headers))
+        xvals = [r[0] for r in t]
+        yvals = [r[1] for r in t]
+        plt.scatter(xvals, yvals)
+        plt.grid()
+
+    plt.show()
+
 

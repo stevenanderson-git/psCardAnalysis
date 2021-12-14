@@ -133,11 +133,20 @@ class hypergeometric_distribution():
         Given a finite population (set) of N items which comprise r Type1 items N-r Type 2 items.
         Select n such objects from a population without replacement such that all selections are equally likely.
         Find y Type1 items in the selection.
+        N - population
+        r - successes
+        n - sample size
+        y - wanted success
         """
         return combination(r, y) * combination(N-r, n-y)
 
     def pmf(self, N, n, r, y):
-        """Returns the Probability Mass Function of the hypergeometric Distribution"""
+        """Returns the Probability Mass Function of the hypergeometric Distribution
+        N - population
+        r - successes
+        n - sample size
+        y - wanted success
+        """
         return self._numerator(N, n, r, y) / combination(N, n)
 
     def expected(self, N, n, r):
