@@ -27,7 +27,7 @@ class Discrete_Random():
         """
         return combination(a, y) * combination(t-a, n-y)
 
-    def disc_rand_pmf(self, y, n, a, t):
+    def pmf(self, y, n, a, t):
         """Probability mass function
         n - number of elements being selected
         y - random variable for selected balls
