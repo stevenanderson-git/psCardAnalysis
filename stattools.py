@@ -13,7 +13,7 @@ def combination(n, r):
     that can be formed from objects."""
     return permutation(n, r) / math.factorial(r)
 
-class Discrete_Random():
+class discrete_random():
     """Discrete Random Variables and Their Probability Distributions"""
 
     def probability_distribution(self, y, n, a, t):
@@ -38,7 +38,7 @@ class Discrete_Random():
         return self.probability_distribution(y, n, a, t) / combination(t, n)
 
 
-class Binomial_Distribution():
+class binomial_distribution():
     """Binomial Distribution - Discrete Random"""
 
     def pmf(self, y, n, p, q=None):
@@ -71,7 +71,7 @@ class Binomial_Distribution():
         return n * p * q
 
 
-class Geometric_Distribution():
+class geometric_distribution():
     """Geometric Distribution - Discrete Random"""
 
     def pmf(self, y, p, q=None):
@@ -126,7 +126,7 @@ class Geometric_Distribution():
         return (1-p) ** n
 
 
-class Hypergeometric_Distribution():
+class hypergeometric_distribution():
 
     def _numerator(self, N, n, r, y):
         """Hypergeometric Distribution
@@ -155,7 +155,7 @@ class Hypergeometric_Distribution():
         return n * (r / N) * ((N-r)/N)*((N-n)/(N-1))
 
 
-class Poisson_Distribution():
+class poisson_distribution():
     def pmf(self, lam, y):
         """Poisson Distribution
         incidents (successes) occur independently in continuous time at a constant rate"""
@@ -168,7 +168,7 @@ class Poisson_Distribution():
         return lam
 
 
-class Tchebysheff_Distribution():
+class tchebysheff_distribution():
     def mean(self, mean):
         return mean
 
@@ -192,7 +192,7 @@ class Tchebysheff_Distribution():
         return 1 - (1 / k ** 2)
 
 
-class Uniform:
+class uniform_distribution():
     """Holds functions for Uniform Distributions"""
 
     def dist_density(self, a, b, c, d):
