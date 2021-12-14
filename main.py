@@ -9,9 +9,12 @@ from stattools import hypergeometric_distribution
 from tabulate import tabulate
 import matplotlib.pyplot as plt
 
+infolder = 'resources\\'
+outfolder = 'output_data\\'
+
 
 def create_from_csv(filename):
-    with open(filename) as csvfile:
+    with open(infolder + filename) as csvfile:
         csvreader = csv.reader(csvfile)
         cardlist = []
         # read each row
@@ -195,5 +198,3 @@ def create_starthanddata(handsize=7, qty=3):
         plt.grid()
 
     plt.show()
-
-

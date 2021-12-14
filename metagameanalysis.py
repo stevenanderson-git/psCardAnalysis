@@ -4,11 +4,13 @@ from tabulate import tabulate
 import matplotlib.pyplot as plt
 import numpy as np
 
+infolder = 'resources\\'
+outfolder = 'output_data\\'
 
 
 def create_from_csv(filename):
     decklists = []
-    with open(filename) as csvfile:
+    with open(infolder + filename) as csvfile:
         csvreader = csv.reader(csvfile)
         for row in csvreader:
             decklists.append(
@@ -49,20 +51,18 @@ def binomial_analysis():
     for d in deck_data:
         decknames.append(d['deckname'])
         yvals.append(d['binomialwin'] * 100)
-    
+
     y_pos = np.arange(len(tuple(decknames)))
-    plt.barh(y_pos,yvals, align='center', alpha = 0.5)
+    plt.barh(y_pos, yvals, align='center', alpha=0.5)
     plt.yticks(y_pos, tuple(decknames))
     plt.xlabel('Percentage')
     plt.title('Binomial wins')
     plt.show()
 
-    with open('binomialoutput.csv', 'w', newline='') as csvfile:
+    with open(outfolder + 'binomialoutput.csv', 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
         for row in table:
             csvwriter.writerow(row)
-
-    
 
 
 binomial_analysis()
