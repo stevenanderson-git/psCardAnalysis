@@ -33,7 +33,7 @@ class Deck:
     def draw(self, x):
         """Removes the first x elements of the deck and returns them in a list"""
         temphand = [self.cardlist.pop(0) for i in range (x)]
-        self.cardsremain = len(self.cardlist)
+        self.countcards()
         return temphand
     
     def reset_deck(self, hand):
@@ -41,9 +41,9 @@ class Deck:
         self.cardlist = self.cardlist + hand
         hand.clear()
         self.shuffle()
-        self.cardsindeck()
+        self.countcards()
     
-    def cardsindeck(self):
+    def countcards(self):
         self.cardsremain = len(self.cardlist)
         return self.cardsremain
 
@@ -51,7 +51,7 @@ class Deck:
         self.reset_deck(hand)
         return self.draw(7)
 
-    def total_classifications(self):
+    def type_distribution(self):
         """Returns a dictionary that represents the total number of cards with each classification"""
         cdict = {'resource':0,'threat':0,'cardadvantage':0,'removal':0}
         for c in self.cardlist:

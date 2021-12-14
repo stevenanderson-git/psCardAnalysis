@@ -4,6 +4,7 @@ from card import Card
 from deckbuilder import Deck
 import csv
 import collections
+from plotstats import make_scatter
 
 
 def create_from_csv(filename):
@@ -66,6 +67,7 @@ def generic_100():
 
 
 def random_deck(totalcards):
+    """Creates a randomized deck with the given total number of cards"""
     deckname = 'Randomized Deck'
     cardlist = []
     for i in range(totalcards):
@@ -104,9 +106,34 @@ def begin_state(deck):
 # Beginning of analysis tests
 
 
-def montehand_test_deck(deck, x):
-    mh = analyze_multihand(deck, x, 7)
+def montehand_test_deck(deck, x, n):
+    """Runs the provided deck through a Monty Carlo simulation x times drawing n cards as an opening hand."""
+    mh = analyze_multihand(deck, x, n)
     counter = collections.Counter()
     for h in mh:
         counter.update(h)
     return dict(counter)
+
+
+def random_deck_datagen():
+    decks_to_create = 100
+    deck_size = 100
+    runs = 100
+    starting_hand = 7
+    # create a list of decks with a random distribution of deck_size cards
+    dataset = [random_deck(deck_size) for i in range(decks_to_create)]
+    results = [(d.type_distribution(), analyze_multihand(d,runs,starting_hand)) for d in dataset]
+    xvals = []
+    yvals = []
+    for (dist, samp_hand) in results:
+        for hand in samp_hand:
+            xvals.append(dist['resource'])
+            yvals.append(hand['resource'])
+    
+    make_scatter(xvals,yvals,'Deck Resources', 'Opening Hand Resources')
+
+
+
+
+random_deck_datagen()
+
