@@ -16,3 +16,4 @@ if __name__ == "__main__":
     tourn, deckdata, table = championship_hands()
     export_to_csv('hypergeometricoutput.csv', table)
     
+    
