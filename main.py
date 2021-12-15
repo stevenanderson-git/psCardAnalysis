@@ -7,11 +7,12 @@ if __name__ == "__main__":
     rounds = 12
     # wins needed for money
     record = 10
-    deck_data = tourndata('standard_breakdown.csv')
+    tournament_records = tourndata('standard_breakdown.csv')
 
-    binomial_analysis(deck_data, rounds, record)
+    binomial_analysis(tournament_records, rounds, record)
     rnd = 3
-    geometric_analysis(deck_data, rnd)
+    geometric_analysis(tournament_records, rnd)
 
     tourn, deckdata, table = championship_hands()
     export_to_csv('hypergeometricoutput.csv', table)
+    

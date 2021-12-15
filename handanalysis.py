@@ -198,13 +198,15 @@ def create_starthanddata(handsize=7, qty=3):
     plt.show()
 
 
-def championship_hands(wanted_res = 3):
+def championship_hands(wanted_res=3):
     hd = hypergeometric_distribution()
     handsize = 7
     tourn = metalist('standard_breakdown.csv')
     deckdata = []
-    headers = ['Deckname', 'Total Cards', 'Handsize', 'Wanted', 'Likelyhood']
+    headers = ['Deckname', 'Total Cards', 'Handsize',
+               'Wanted', 'Likelyhood', 'MonteCarlo-10000']
     table = []
+    monte_runs = 10000
     for l in tourn:
         deckname = l['deckname']
         deck = create_from_csv(deckname+'.csv')
@@ -212,8 +214,28 @@ def championship_hands(wanted_res = 3):
 
         res = deck.type_distribution()['resource']
         decksize = deck.totalcards
-        likelyhood = hd.pmf(decksize, res, handsize, wanted_res)
+        l['likelyhood'] = hd.pmf(decksize, res, handsize, wanted_res)
 
-        table.append([deckname, decksize, handsize, wanted_res, "{:.2%}".format(likelyhood)])
+        # Poisson data to generate Monte Carlo average of resource count
+        l['monte-average'] = average_resources(deck, monte_runs, handsize)
+
+        table.append([deckname, decksize, handsize, wanted_res,
+                     "{:.2%}".format(l['likelyhood']), l['monte-average']])
+
     return tourn, deckdata, table
 
+
+def average_resources(deck, x, n):
+    """Runs the provided deck through a monte carlo simulation x times with handsize n.
+    Provides the average resource count in opening hand for the deck.
+    """
+    counter = collections.Counter()
+    deck.shuffle()
+    for i in range(x):
+        # draw n cards
+        hand = deck.draw(n)
+        # analysis of cards in hand
+        counter.update(analyze_hand(hand))
+        # shuffle hand back in
+        deck.reset_deck(hand)
+    return dict(counter)['resource'] / x
