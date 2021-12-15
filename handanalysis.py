@@ -216,11 +216,14 @@ def championship_hands(wanted_res=3):
         decksize = deck.totalcards
         l['likelyhood'] = hd.pmf(decksize, res, handsize, wanted_res)
 
-        # Poisson data to generate Monte Carlo average of resource count
-        l['monte-average'] = average_resources(deck, monte_runs, handsize)
-
         table.append([deckname, decksize, handsize, wanted_res,
-                     "{:.2%}".format(l['likelyhood']), l['monte-average']])
+                     "{:.2%}".format(l['likelyhood'])])
+
+        ## Poisson data to generate Monte Carlo average of resource count
+        #l['monte-average'] = average_resources(deck, monte_runs, handsize)
+        #
+        #table.append([deckname, decksize, handsize, wanted_res,
+        #             "{:.2%}".format(l['likelyhood']), l['monte-average']])
 
     return tourn, deckdata, table
 
