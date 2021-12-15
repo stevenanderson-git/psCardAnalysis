@@ -8,6 +8,8 @@ from plotstats import make_scatter
 from stattools import hypergeometric_distribution
 from tabulate import tabulate
 import matplotlib.pyplot as plt
+from metagameanalysis import create_from_csv as metalist
+
 
 infolder = 'resources\\'
 outfolder = 'output_data\\'
@@ -37,6 +39,10 @@ def create_from_csv(filename):
         # build the deck
         deckname = filename.split('.', 1)[0]
         return Deck(deckname, cardlist)
+
+
+def export_to_csv(filename, data):
+    pass
 
 
 def create_generic_deck(resources, threats, removal, cardadvantage, deckname='Generic Deck'):
@@ -198,3 +204,17 @@ def create_starthanddata(handsize=7, qty=3):
         plt.grid()
 
     plt.show()
+
+
+def championship_hands():
+    tourn = metalist('standard_breakdown.csv')
+    deckdata = []
+    for l in tourn:
+        deck = create_from_csv(l['deckname']+'.csv')
+        deckdata.append(deck)
+        print(deck)
+        
+
+
+if __name__ == "__main__":
+    championship_hands()

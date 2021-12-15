@@ -76,6 +76,7 @@ class geometric_distribution():
 
     def pmf(self, y, p, q=None):
         """Geometric Distribution
+        Success on specified trial
 
         y - number of trials up to and including first success
         p - probability of success

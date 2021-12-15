@@ -1,5 +1,5 @@
 import csv
-from stattools import binomial_distribution
+from stattools import binomial_distribution, geometric_distribution
 from tabulate import tabulate
 import matplotlib.pyplot as plt
 import numpy as np
@@ -19,6 +19,14 @@ def create_from_csv(filename):
     return decklists
 
 
+def export_to_csv(filename, table):
+    """Export data that is in table form to csv"""
+    with open(outfolder + filename, 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        for row in table:
+            csvwriter.writerow(row)
+
+
 def binomialcalculation(deck, rounds, record):
     winrate = deck['winrate']
     bd = binomial_distribution()
@@ -26,15 +34,7 @@ def binomialcalculation(deck, rounds, record):
     return winning
 
 
-def binomial_analysis():
-    # generate deck data
-    deck_data = create_from_csv('standard_breakdown.csv')
-
-    # tournament
-    rounds = 12
-    # number of wins needed for money
-    record = 10
-
+def binomial_analysis(deck_data, rounds, record):
     # calculate percentage of winning
     for d in deck_data:
         d['binomialwin'] = binomialcalculation(d, rounds, record)
@@ -46,23 +46,56 @@ def binomial_analysis():
         table.append([d['deckname'], "{:.2%}".format(d['binomialwin'])])
 
     # build a bar chart
-    decknames = []
-    yvals = []
+    # decknames = []
+    # yvals = []
+    # for d in deck_data:
+    #     decknames.append(d['deckname'])
+    #     yvals.append(d['binomialwin'] * 100)
+    #
+    # y_pos = np.arange(len(tuple(decknames)))
+    # plt.barh(y_pos, yvals, align='center', alpha=0.5)
+    # plt.yticks(y_pos, tuple(decknames))
+    # plt.xlabel('Percentage')
+    # plt.title('Binomial wins')
+    # plt.show()
+
+    export_to_csv('binomialoutput.csv', table)
+
+
+def geometric_analysis(deck_data, rnd):
+    gd = geometric_distribution()
+    so = 'success on ' + str(rnd)
+    soob = 'success on or before ' + str(rnd)
+    sb = 'success before ' + str(rnd)
+    sooa = 'success on or after ' + str(rnd)
+    sa = 'success after ' + str(rnd)
+
     for d in deck_data:
-        decknames.append(d['deckname'])
-        yvals.append(d['binomialwin'] * 100)
+        wr = d['winrate']
+        d[so] = gd.pmf(rnd, wr)
+        d[soob] = gd.success_onorbefore(rnd, wr)
+        d[sb] = gd.success_before(rnd, wr)
+        d[sooa] = gd.success_onorafter(rnd, wr)
+        d[sa] = gd.success_after(rnd, wr)
 
-    y_pos = np.arange(len(tuple(decknames)))
-    plt.barh(y_pos, yvals, align='center', alpha=0.5)
-    plt.yticks(y_pos, tuple(decknames))
-    plt.xlabel('Percentage')
-    plt.title('Binomial wins')
-    plt.show()
+    headers = ['Deckname', 'winrate', so, soob, sb, sooa, sa]
+    table = []
+    for d in deck_data:
+        table.append([d['deckname'], "{:.2%}".format(d['winrate']), "{:.2%}".format(d[so]),
+                      "{:.2%}".format(d[soob]), "{:.2%}".format(
+                          d[sb]), "{:.2%}".format(d[sooa]),
+                      "{:.2%}".format(d[sa])])
 
-    with open(outfolder + 'binomialoutput.csv', 'w', newline='') as csvfile:
-        csvwriter = csv.writer(csvfile)
-        for row in table:
-            csvwriter.writerow(row)
+    export_to_csv('geometricoutput.csv', table)
 
 
-binomial_analysis()
+if __name__ == "__main__":
+    # tournament rounds
+    rounds = 12
+    # wins needed for money
+    record = 10
+    deck_data = create_from_csv('standard_breakdown.csv')
+
+    binomial_analysis(deck_data, rounds, record)
+    rnd = 3
+    geometric_analysis(deck_data, rnd)
