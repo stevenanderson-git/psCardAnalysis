@@ -89,13 +89,3 @@ def geometric_analysis(deck_data, rnd):
     export_to_csv('geometricoutput.csv', table)
 
 
-if __name__ == "__main__":
-    # tournament rounds
-    rounds = 12
-    # wins needed for money
-    record = 10
-    deck_data = create_from_csv('standard_breakdown.csv')
-
-    binomial_analysis(deck_data, rounds, record)
-    rnd = 3
-    geometric_analysis(deck_data, rnd)

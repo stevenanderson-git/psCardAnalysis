@@ -8,7 +8,7 @@ from plotstats import make_scatter
 from stattools import hypergeometric_distribution
 from tabulate import tabulate
 import matplotlib.pyplot as plt
-from metagameanalysis import create_from_csv as metalist, export_to_csv
+from metagameanalysis import create_from_csv as metalist
 
 
 infolder = 'resources\\'
@@ -217,7 +217,3 @@ def championship_hands(wanted_res = 3):
         table.append([deckname, decksize, handsize, wanted_res, "{:.2%}".format(likelyhood)])
     return tourn, deckdata, table
 
-
-if __name__ == "__main__":
-    tourn, deckdata, table = championship_hands()
-    export_to_csv('hypergeometricoutput.csv', table)
