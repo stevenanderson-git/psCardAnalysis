@@ -1,5 +1,5 @@
 import random
-from analysis import analyze_multihand
+from analysis import analyze_multihand, analyze_hand
 from card import Card
 from deckbuilder import Deck
 import csv
@@ -8,7 +8,7 @@ from plotstats import make_scatter
 from stattools import hypergeometric_distribution
 from tabulate import tabulate
 import matplotlib.pyplot as plt
-from metagameanalysis import create_from_csv as metalist
+from metagameanalysis import create_from_csv as metalist, export_to_csv
 
 
 infolder = 'resources\\'
@@ -39,10 +39,6 @@ def create_from_csv(filename):
         # build the deck
         deckname = filename.split('.', 1)[0]
         return Deck(deckname, cardlist)
-
-
-def export_to_csv(filename, data):
-    pass
 
 
 def create_generic_deck(resources, threats, removal, cardadvantage, deckname='Generic Deck'):
@@ -82,20 +78,16 @@ def random_deck(totalcards):
     return Deck(deckname, cardlist)
 
 
-def begin_state(deck):
+def draw_opening_hand(deck, handsize):
     """
-    Generates a shuffled deck and hand of 7 cards and returns the objects.
+    Generates a shuffled deck and hand handsize cards and returns the objects.
     deck - a Deck of MTG cards
+    handsize - number of cards to draw
     """
-    print("Shuffling")
+
     deck.shuffle()
-    print(deck)
-    print("Drawing 7")
-    hand = deck.draw(7)
-    print(deck)
-    print('Cards in hand:')
-    for c in hand:
-        print(c)
+
+    hand = deck.draw(handsize)
 
     return deck, hand
 
@@ -206,15 +198,26 @@ def create_starthanddata(handsize=7, qty=3):
     plt.show()
 
 
-def championship_hands():
+def championship_hands(wanted_res = 3):
+    hd = hypergeometric_distribution()
+    handsize = 7
     tourn = metalist('standard_breakdown.csv')
     deckdata = []
+    headers = ['Deckname', 'Total Cards', 'Handsize', 'Wanted', 'Likelyhood']
+    table = []
     for l in tourn:
-        deck = create_from_csv(l['deckname']+'.csv')
+        deckname = l['deckname']
+        deck = create_from_csv(deckname+'.csv')
         deckdata.append(deck)
-        print(deck)
-        
+
+        res = deck.type_distribution()['resource']
+        decksize = deck.totalcards
+        likelyhood = hd.pmf(decksize, res, handsize, wanted_res)
+
+        table.append([deckname, decksize, handsize, wanted_res, "{:.2%}".format(likelyhood)])
+    return tourn, deckdata, table
 
 
 if __name__ == "__main__":
-    championship_hands()
+    tourn, deckdata, table = championship_hands()
+    export_to_csv('hypergeometricoutput.csv', table)
